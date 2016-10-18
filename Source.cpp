@@ -1,357 +1,195 @@
-#include <iostream>
-//#include <GLFW/glfw3.h>
+﻿#include <iostream>
+#include <string>
+#include <vector>
+#include "MyPainter2D.h"
 
+MyPainter2D my_painter;
 
-//int main()
+//class Box // NO PARENT (2pts)
 //{
-//	int a;// garabage value
-//	a = 123;	
-//	std::cout << a << std::endl;
-//
-//	int *ptr_a;// garabage value
-//	ptr_a = nullptr;//in old style, ptr_a = 0, ptr_a = null;
-//
-//	//ptr_a = &a;//starting addreess of a
-//	//std::cout << ptr_a << std::endl;
-//
-//
-//	//if(ptr_a != nullptr)//do it have real address if not
-//	//	std::cout << *ptr_a << std::endl;// garabage value so error
-//	//else
-//	//	std::cout << "warning" << std::endl;
-//
-//	const int num_int = 1000;
-//	ptr_a = new int[num_int]; //dynamic allocation
-//
-//	int a_arr[num_int];//fix in compile time, so int num_int = 100; have error
-//
-//
-//	//there should be a ; delete' in the code if you called a 'new;
-//	delete[] ptr_a;
-//}
-
-//pointers
-//function pointer and polymorphism
-
-//void drawCircle()
-////void drawCircle(const int& a)
-//{
-//	std::cout << "Circle" << std::endl;
-//}
-//void drawBox()
-//{
-//	std::cout << "box" << std::endl;
-//}
-//int main()
-//{
-//	
-//
-//	void(*func_p)(void) = nullptr;
-//	////void(*func_p)(const int& a) = nullptr; 
-//
-//	func_p = &drawCircle; //assinged address
-//	std::cout << func_p << std::endl;
-//	func_p();//excute
-//	//func_p(123);//excute
-//	(*func_p)();//excute
-//
-//
-//
-//	return 0;
-//
-//}
-
-
-//class GeometricObject
-//{
-//
 //public:
-//	int a_;
-//	//void(*callback_)(void) = nullptr;
-//	void(GeometricObject::*callback_)(void) = nullptr;
-//
-//
-//	void exe()
+//	// some variables
+//	void draw()
 //	{
-//		(this->*callback_)();
+//		//std::cout << "Box" << std::endl;
+//		my_painter.drawLine(200, 400, 250, 400, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(200, 350, 250, 350, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(200, 350, 200, 400, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(250, 350, 250, 400, 0.0f, 0.0f, 1.0f);
 //	}
-//
-//	//virtual void draw(void) = 0;
-//
-//
-//	void drawCircle()
-//	{
-//		std::cout << "Circle : " << a_ << std::endl;
-//	}
-//	void drawBox()
-//	{
-//		std::cout << "box" << a_ << std::endl;
-//	}
-//
 //};
-//int main()
+//
+//class Circle // NO PARENT (2pts)
 //{
-//	//int a;// garabage value
-//	//a = 123;	
-//	//std::cout << a << std::endl;
-//
-//	//int *ptr_a;// garabage value
-//	//ptr_a = nullptr;//in old style, ptr_a = 0, ptr_a = null;
-//
-//	////ptr_a = &a;//starting addreess of a
-//	////std::cout << ptr_a << std::endl;
-//
-//
-//	////if(ptr_a != nullptr)//do it have real address if not
-//	////	std::cout << *ptr_a << std::endl;// garabage value so error
-//	////else
-//	////	std::cout << "warning" << std::endl;
-//
-//	//const int num_int = 1000;
-//	//ptr_a = new int[num_int]; //dynamic allocation
-//
-//	//int a_arr[num_int];//fix in compile time, so int num_int = 100; have error
-//
-//
-//	////there should be a ; delete' in the code if you called a 'new;
-//	//delete[] ptr_a;
-//
-//
-//	//int *p = nullptr;
-//
-//	//void(*func_p)(void) = nullptr;
-//	////void(*func_p)(const int& a) = nullptr; 
-//
-//	//func_p = &drawCircle; //assinged address
-//	//std::cout << func_p << std::endl;
-//	//func_p();//excute
-//	//(*func_p)();//excute
-//
-//
-//	//func_p = &drawBox; //address
-//	//std::cout << func_p << std::endl;
-//	//func_p();//excute
-//
-//
-//
-//
-//
-//	GeometricObject my_box, my_circle;
-//	/*my_box.callback_ = &drawBox;
-//	my_circle.callback_ = &drawCircle;
-//	my_box.callback_();
-//	my_circle.callback_();*/
-//
-//	my_box.callback_ = &GeometricObject::drawBox;
-//	my_circle.callback_ = &GeometricObject::drawCircle;
-//
-//	my_box.a_ = 123;
-//	/*(my_box.*my_box.callback_)();*/
-//
-//
-//	my_box.exe();
-//
-//	return 0;
-//
-//}
-
-
-
-//void drawCircle()
-//{
-//	std::cout << "Circle : "<< std::endl;
-//}
-//
-//void drawBox()
-//{
-//	std::cout << "box" << std::endl;
-//}
-//
-//class GeometricObject
-//{
-//
 //public:
-//	void(*callback_)(void) = nullptr;
+//	// some variables
+//	void draw()
+//	{
+//		//std::cout << "Circle" << std::endl;
+//		my_painter.drawLine(321, 80, 325, 80, 0.0f, 0.0f, 1.0f); my_painter.drawLine(326, 80, 330, 80, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(317, 79, 320, 79, 0.0f, 0.0f, 1.0f); my_painter.drawLine(331, 79, 334, 79, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(315, 78, 317, 78, 0.0f, 0.0f, 1.0f); my_painter.drawLine(334, 78, 336, 78, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(313, 77, 314, 77, 0.0f, 0.0f, 1.0f); my_painter.drawLine(337, 77, 338, 77, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(312, 76, 313, 76, 0.0f, 0.0f, 1.0f); my_painter.drawLine(338, 76, 339, 76, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(310, 75, 311, 75, 0.0f, 0.0f, 1.0f); my_painter.drawLine(340, 75, 341, 75, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(309, 74, 310, 74, 0.0f, 0.0f, 1.0f); my_painter.drawLine(341, 74, 342, 74, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(308, 73, 309, 73, 0.0f, 0.0f, 1.0f); my_painter.drawLine(342, 73, 343, 73, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(307, 72, 308, 72, 0.0f, 0.0f, 1.0f); my_painter.drawLine(343, 72, 344, 72, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(306, 71, 307, 71, 0.0f, 0.0f, 1.0f); my_painter.drawLine(344, 71, 345, 71, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(306, 70, 306, 70, 0.0f, 0.0f, 1.0f); my_painter.drawLine(345, 70, 345, 70, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(305, 69, 305, 69, 0.0f, 0.0f, 1.0f); my_painter.drawLine(346, 69, 346, 69, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(304, 68, 305, 68, 0.0f, 0.0f, 1.0f); my_painter.drawLine(346, 68, 347, 68, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(304, 67, 304, 67, 0.0f, 0.0f, 1.0f); my_painter.drawLine(347, 67, 347, 67, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(303, 64, 303, 66, 0.0f, 0.0f, 1.0f); my_painter.drawLine(348, 64, 348, 66, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(302, 61, 302, 64, 0.0f, 0.0f, 1.0f); my_painter.drawLine(349, 61, 349, 64, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(301, 56, 301, 60, 0.0f, 0.0f, 1.0f); my_painter.drawLine(350, 56, 350, 60, 0.0f, 0.0f, 1.0f);
+//
+//		my_painter.drawLine(301, 51, 301, 55, 0.0f, 0.0f, 1.0f); my_painter.drawLine(350, 51, 350, 55, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(302, 47, 302, 50, 0.0f, 0.0f, 1.0f); my_painter.drawLine(349, 47, 349, 50, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(303, 45, 303, 47, 0.0f, 0.0f, 1.0f); my_painter.drawLine(348, 45, 348, 47, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(304, 44, 304, 44, 0.0f, 0.0f, 1.0f); my_painter.drawLine(347, 44, 347, 44, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(304, 43, 305, 43, 0.0f, 0.0f, 1.0f); my_painter.drawLine(346, 43, 347, 43, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(305, 42, 305, 42, 0.0f, 0.0f, 1.0f); my_painter.drawLine(346, 42, 346, 42, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(306, 41, 306, 41, 0.0f, 0.0f, 1.0f); my_painter.drawLine(345, 41, 345, 41, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(306, 40, 307, 40, 0.0f, 0.0f, 1.0f); my_painter.drawLine(344, 40, 345, 40, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(307, 39, 308, 39, 0.0f, 0.0f, 1.0f); my_painter.drawLine(343, 39, 344, 39, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(308, 38, 309, 38, 0.0f, 0.0f, 1.0f); my_painter.drawLine(342, 38, 343, 38, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(309, 37, 310, 37, 0.0f, 0.0f, 1.0f); my_painter.drawLine(341, 37, 342, 37, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(310, 36, 311, 36, 0.0f, 0.0f, 1.0f); my_painter.drawLine(340, 36, 341, 36, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(312, 35, 313, 35, 0.0f, 0.0f, 1.0f); my_painter.drawLine(338, 35, 339, 35, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(313, 34, 314, 34, 0.0f, 0.0f, 1.0f); my_painter.drawLine(337, 34, 338, 34, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(315, 33, 317, 33, 0.0f, 0.0f, 1.0f); my_painter.drawLine(334, 33, 336, 33, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(317, 32, 320, 32, 0.0f, 0.0f, 1.0f); my_painter.drawLine(331, 32, 334, 32, 0.0f, 0.0f, 1.0f);
+//		my_painter.drawLine(321, 31, 325, 31, 0.0f, 0.0f, 1.0f); my_painter.drawLine(326, 31, 330, 31, 0.0f, 0.0f, 1.0f);
+//	}
+//};
+//
+//class GeometricObjectInterface
+//{
+//public:
+//	virtual void draw() = 0;
 //
 //};
 //
-//int main()
+//template<class T_OPERATION>
+//class GeometricObject : public GeometricObjectInterface
 //{
-//	GeometricObject my_box, my_circle;
-//	my_box.callback_ = &drawBox;
-//	my_circle.callback_ = &drawCircle;
-//	my_box.callback_();
-//	
-//	return 0;
-//}
-
-//class GeometricObject
-//{
-//
 //public:
-//	int a_;
-//
-//	void(GeometricObject::*callback_)(void) = nullptr;
-//
-//	void drawCircle()
+//	void draw()
 //	{
-//		std::cout << "Circle : " << a_ << std::endl;
+//		T_OPERATION operation;
+//		operation.draw();
 //	}
-//	void drawBox()
-//	{
-//		std::cout << "box" << a_ << std::endl;
-//	}
-//
 //};
-//
-//int main()
-//{
-//	GeometricObject my_box, my_circle;
-//
-//	my_box.callback_ = &GeometricObject::drawBox;
-//	my_circle.callback_ = &GeometricObject::drawCircle;
-//
-//	my_box.a_ = 1243;
-//	(my_box.*my_box.callback_)();
-//
-//
-//	return 0;
-//
-//}
-
-
-
-//class GeometricObject
-//{
-//
-//public:
-//	int a_;
-//
-//	void(GeometricObject::*callback_)(void) = nullptr;
-//	//void(GeometricObject::*callback_)(const int& v) = nullptr;
-//
-//	void exe()
-//	{
-//		(this->*callback_)();
-//		//(this->*callback_)(123);
-//	}
-//
-//	void drawCircle()//void drawCircle(const int& v)
-//	{
-//		std::cout << "Circle : " << a_ << std::endl;
-//	}
-//
-//	void drawBox()
-//	{
-//		std::cout << "box" << a_ << std::endl;
-//	}
-//
-//};
-//int main()
-//{
-//	GeometricObject my_box, my_circle;
-//
-//	my_box.callback_ = &GeometricObject::drawBox;
-//	my_circle.callback_ = &GeometricObject::drawCircle;
-//
-//	my_box.a_ = 123;
-//	my_box.exe();
-//
-//	return 0;
-//
-//}
 
 class GeometricObject
 {
 
 public:
-	int a_=123;
-
 	void(GeometricObject::*callback_)(void) = nullptr;
 
-
-	void execute()
+	void exe()
 	{
 		(this->*callback_)();
 	}
 
-
-
-	//static void command(void(GeometricObject* go, void(GeometricObject::*input_p)(void))
-	//{
-	//	//(this->*callback_)();
-
-	//	assert(go != nullptr);
-
-
-	//}
-
 	void drawCircle()//void drawCircle(const int& v)
 	{
-		std::cout << "Circle : " << a_ << std::endl;
+		//std::cout << "circle" << std::endl;
+		my_painter.drawLine(180, 270, 270, 270, 0.0f, 0.0f, 1.0f);
+		my_painter.drawLine(180, 180, 270, 180, 0.0f, 0.0f, 1.0f);
+		my_painter.drawLine(180, 180, 180, 270, 0.0f, 0.0f, 1.0f);
+		my_painter.drawLine(270, 180, 270, 270, 0.0f, 0.0f, 1.0f);
+
+		for (int i = 200; i < 250; i++)
+		{
+			for (int j = 200; j < 250; j++)
+				my_painter.drawOnePixel(i, j, 0.0f, 0.0f, 1.0f);
+		}
 	}
 
 	void drawBox()
 	{
-		std::cout << "box : " << a_ << std::endl;
-	}
-	
-	static GeometricObject* getPointer(const std::string type_name)
-	{
+		//std::cout << "box" << std::endl;
+		int w = 50;
+		int h = 50;
 
-		auto new_ob = new GeometricObject;
+		int x = 325;
+		int y = 175;
 
-
-
-		if (type_name == "Box")
+		for (int i = 0; i<w * 2; i++)
 		{
-			new_ob->callback_ = &GeometricObject::drawBox;
-		}
-		else if (type_name == "Circle")
-		{
-			new_ob->callback_ = &GeometricObject::drawCircle;
+			for (int j = 0; j<h * 2; j++)
+			{
+				if (w*h >(i + 0.5 - w)*(i + 0.5 - w) + (j + 0.5 - h)*(j + 0.5 - h))
+					my_painter.drawOnePixel(i + x, j + y, 1.0f, 0.0f, 0.0f);
+			}
 		}
 
-		return new_ob;
+		w = 49;
+		h = 49;
+		x = 326;
+		y = 176;
 
+		for (int i = 0; i<w * 2; i++)
+		{
+			for (int j = 0; j<h * 2; j++)
+			{
+				if (w*h >(i + 0.5 - w)*(i + 0.5 - w) + (j + 0.5 - h)*(j + 0.5 - h))
+					my_painter.drawOnePixel(i + x, j + y, 1.0f, 1.0f, 1.0f);
+			}
+		}
+
+
+		for (int i = 350; i < 400; i++)
+		{
+			for (int j = 200; j < 250; j++)
+				my_painter.drawOnePixel(i, j, 1.0f, 0.0f, 0.0f);
+		}
 	}
 
 };
-#include <list>
+
+// And implement an templatized GeometricObject class. (3pts)
 int main()
 {
-	/*
-	GeometricObject go;
-	go.getPoint(...);
-	GeometricObject::getPointer(...);//
-	*/
+	GeometricObject my_box, my_circle;
 
-	std::list <GeometricObject *>go_list;
+	my_box.callback_ = &GeometricObject::drawBox;
+	my_circle.callback_ = &GeometricObject::drawCircle;
 
-	go_list.push_back(GeometricObject::getPointer("Box"));
-	go_list.push_back(GeometricObject::getPointer("Circle"));
+	
+
+	
 
 
-	for (auto itr : go_list)
+
+	//std::vector<GeometricObjectInterface*> obj_list;
+
+	//obj_list.push_back(new GeometricObject<Box>);
+	//obj_list.push_back(new GeometricObject<Circle>);
+
+
+	my_painter.initialize();
+	while (!my_painter.ShouldCloseWindow())
 	{
-		itr->execute();
+		for (int j = 0; j < my_painter.height; j++)
+		{
+			for (int i = 0; i < my_painter.width; i++)
+				my_painter.drawOnePixel(i, j, 1.0f, 1.0f, 1.0f);
+		}
+
+		my_painter.preProcessing();
+
+		/*for (auto itr : obj_list)
+			itr->draw();*/
+
+		my_box.exe();
+		my_circle.exe();
+
+		my_painter.postProcessing();
+
 	}
-
-	for (auto itr : go_list)
-	{
-		delete itr;
-	}
-	//GeometricObject my_box, my_circle;
-
-	//my_box.callback_ = &GeometricObject::drawBox;
-	//my_circle.callback_ = &GeometricObject::drawCircle;
-
-
-	////command pattern
-	//my_circle.a_ = 456;
-	//my_box.a_ = 123;
-	//my_box.exe(&my_box, &GeometricObject::drawBox);
 
 	return 0;
-
 }
