@@ -1,0 +1,357 @@
+#include <iostream>
+//#include <GLFW/glfw3.h>
+
+
+//int main()
+//{
+//	int a;// garabage value
+//	a = 123;	
+//	std::cout << a << std::endl;
+//
+//	int *ptr_a;// garabage value
+//	ptr_a = nullptr;//in old style, ptr_a = 0, ptr_a = null;
+//
+//	//ptr_a = &a;//starting addreess of a
+//	//std::cout << ptr_a << std::endl;
+//
+//
+//	//if(ptr_a != nullptr)//do it have real address if not
+//	//	std::cout << *ptr_a << std::endl;// garabage value so error
+//	//else
+//	//	std::cout << "warning" << std::endl;
+//
+//	const int num_int = 1000;
+//	ptr_a = new int[num_int]; //dynamic allocation
+//
+//	int a_arr[num_int];//fix in compile time, so int num_int = 100; have error
+//
+//
+//	//there should be a ; delete' in the code if you called a 'new;
+//	delete[] ptr_a;
+//}
+
+//pointers
+//function pointer and polymorphism
+
+//void drawCircle()
+////void drawCircle(const int& a)
+//{
+//	std::cout << "Circle" << std::endl;
+//}
+//void drawBox()
+//{
+//	std::cout << "box" << std::endl;
+//}
+//int main()
+//{
+//	
+//
+//	void(*func_p)(void) = nullptr;
+//	////void(*func_p)(const int& a) = nullptr; 
+//
+//	func_p = &drawCircle; //assinged address
+//	std::cout << func_p << std::endl;
+//	func_p();//excute
+//	//func_p(123);//excute
+//	(*func_p)();//excute
+//
+//
+//
+//	return 0;
+//
+//}
+
+
+//class GeometricObject
+//{
+//
+//public:
+//	int a_;
+//	//void(*callback_)(void) = nullptr;
+//	void(GeometricObject::*callback_)(void) = nullptr;
+//
+//
+//	void exe()
+//	{
+//		(this->*callback_)();
+//	}
+//
+//	//virtual void draw(void) = 0;
+//
+//
+//	void drawCircle()
+//	{
+//		std::cout << "Circle : " << a_ << std::endl;
+//	}
+//	void drawBox()
+//	{
+//		std::cout << "box" << a_ << std::endl;
+//	}
+//
+//};
+//int main()
+//{
+//	//int a;// garabage value
+//	//a = 123;	
+//	//std::cout << a << std::endl;
+//
+//	//int *ptr_a;// garabage value
+//	//ptr_a = nullptr;//in old style, ptr_a = 0, ptr_a = null;
+//
+//	////ptr_a = &a;//starting addreess of a
+//	////std::cout << ptr_a << std::endl;
+//
+//
+//	////if(ptr_a != nullptr)//do it have real address if not
+//	////	std::cout << *ptr_a << std::endl;// garabage value so error
+//	////else
+//	////	std::cout << "warning" << std::endl;
+//
+//	//const int num_int = 1000;
+//	//ptr_a = new int[num_int]; //dynamic allocation
+//
+//	//int a_arr[num_int];//fix in compile time, so int num_int = 100; have error
+//
+//
+//	////there should be a ; delete' in the code if you called a 'new;
+//	//delete[] ptr_a;
+//
+//
+//	//int *p = nullptr;
+//
+//	//void(*func_p)(void) = nullptr;
+//	////void(*func_p)(const int& a) = nullptr; 
+//
+//	//func_p = &drawCircle; //assinged address
+//	//std::cout << func_p << std::endl;
+//	//func_p();//excute
+//	//(*func_p)();//excute
+//
+//
+//	//func_p = &drawBox; //address
+//	//std::cout << func_p << std::endl;
+//	//func_p();//excute
+//
+//
+//
+//
+//
+//	GeometricObject my_box, my_circle;
+//	/*my_box.callback_ = &drawBox;
+//	my_circle.callback_ = &drawCircle;
+//	my_box.callback_();
+//	my_circle.callback_();*/
+//
+//	my_box.callback_ = &GeometricObject::drawBox;
+//	my_circle.callback_ = &GeometricObject::drawCircle;
+//
+//	my_box.a_ = 123;
+//	/*(my_box.*my_box.callback_)();*/
+//
+//
+//	my_box.exe();
+//
+//	return 0;
+//
+//}
+
+
+
+//void drawCircle()
+//{
+//	std::cout << "Circle : "<< std::endl;
+//}
+//
+//void drawBox()
+//{
+//	std::cout << "box" << std::endl;
+//}
+//
+//class GeometricObject
+//{
+//
+//public:
+//	void(*callback_)(void) = nullptr;
+//
+//};
+//
+//int main()
+//{
+//	GeometricObject my_box, my_circle;
+//	my_box.callback_ = &drawBox;
+//	my_circle.callback_ = &drawCircle;
+//	my_box.callback_();
+//	
+//	return 0;
+//}
+
+//class GeometricObject
+//{
+//
+//public:
+//	int a_;
+//
+//	void(GeometricObject::*callback_)(void) = nullptr;
+//
+//	void drawCircle()
+//	{
+//		std::cout << "Circle : " << a_ << std::endl;
+//	}
+//	void drawBox()
+//	{
+//		std::cout << "box" << a_ << std::endl;
+//	}
+//
+//};
+//
+//int main()
+//{
+//	GeometricObject my_box, my_circle;
+//
+//	my_box.callback_ = &GeometricObject::drawBox;
+//	my_circle.callback_ = &GeometricObject::drawCircle;
+//
+//	my_box.a_ = 1243;
+//	(my_box.*my_box.callback_)();
+//
+//
+//	return 0;
+//
+//}
+
+
+
+//class GeometricObject
+//{
+//
+//public:
+//	int a_;
+//
+//	void(GeometricObject::*callback_)(void) = nullptr;
+//	//void(GeometricObject::*callback_)(const int& v) = nullptr;
+//
+//	void exe()
+//	{
+//		(this->*callback_)();
+//		//(this->*callback_)(123);
+//	}
+//
+//	void drawCircle()//void drawCircle(const int& v)
+//	{
+//		std::cout << "Circle : " << a_ << std::endl;
+//	}
+//
+//	void drawBox()
+//	{
+//		std::cout << "box" << a_ << std::endl;
+//	}
+//
+//};
+//int main()
+//{
+//	GeometricObject my_box, my_circle;
+//
+//	my_box.callback_ = &GeometricObject::drawBox;
+//	my_circle.callback_ = &GeometricObject::drawCircle;
+//
+//	my_box.a_ = 123;
+//	my_box.exe();
+//
+//	return 0;
+//
+//}
+
+class GeometricObject
+{
+
+public:
+	int a_=123;
+
+	void(GeometricObject::*callback_)(void) = nullptr;
+
+
+	void execute()
+	{
+		(this->*callback_)();
+	}
+
+
+
+	//static void command(void(GeometricObject* go, void(GeometricObject::*input_p)(void))
+	//{
+	//	//(this->*callback_)();
+
+	//	assert(go != nullptr);
+
+
+	//}
+
+	void drawCircle()//void drawCircle(const int& v)
+	{
+		std::cout << "Circle : " << a_ << std::endl;
+	}
+
+	void drawBox()
+	{
+		std::cout << "box : " << a_ << std::endl;
+	}
+	
+	static GeometricObject* getPointer(const std::string type_name)
+	{
+
+		auto new_ob = new GeometricObject;
+
+
+
+		if (type_name == "Box")
+		{
+			new_ob->callback_ = &GeometricObject::drawBox;
+		}
+		else if (type_name == "Circle")
+		{
+			new_ob->callback_ = &GeometricObject::drawCircle;
+		}
+
+		return new_ob;
+
+	}
+
+};
+#include <list>
+int main()
+{
+	/*
+	GeometricObject go;
+	go.getPoint(...);
+	GeometricObject::getPointer(...);//
+	*/
+
+	std::list <GeometricObject *>go_list;
+
+	go_list.push_back(GeometricObject::getPointer("Box"));
+	go_list.push_back(GeometricObject::getPointer("Circle"));
+
+
+	for (auto itr : go_list)
+	{
+		itr->execute();
+	}
+
+	for (auto itr : go_list)
+	{
+		delete itr;
+	}
+	//GeometricObject my_box, my_circle;
+
+	//my_box.callback_ = &GeometricObject::drawBox;
+	//my_circle.callback_ = &GeometricObject::drawCircle;
+
+
+	////command pattern
+	//my_circle.a_ = 456;
+	//my_box.a_ = 123;
+	//my_box.exe(&my_box, &GeometricObject::drawBox);
+
+	return 0;
+
+}
